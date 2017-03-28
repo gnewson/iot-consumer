@@ -1,0 +1,26 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}STATES{% endblock %}
+
+{% block content %}
+<div class="page-header">
+	<h1>State Changes</h1>
+	<table class="table">
+		<thead>
+			<tr>
+			<th>did</th>
+			<th>timestamp</th>
+			<th>state</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for state in states %}
+		<tr>
+		<td>{{ state.did }}</td>
+		<td>{{ state.timestamp }}</td>
+		<td>{{ state.state }}</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	{% endblock %}
