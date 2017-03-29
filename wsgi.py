@@ -1,12 +1,17 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
+import os
 
-#basedir = os.path.abspat(os.paat.dirname(__file__))
+user = os.environ["MYSQL_USER"]
+passw = os.environ["MYSQL_PASSWORD"]
+dbhost = os.environ["MYSQL_SERVICE_HOST"]
+dbname = os.environ["MYSQL_DATABASE"]
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Mmp!tR1t@localhost/states'
-app.config['SQLALCHMY_COMMIT_ON_TEARDOWN'] = True
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 bootstrap = Bootstrap(app)
