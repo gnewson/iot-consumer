@@ -8,13 +8,13 @@ passw = os.environ["MYSQL_PASSWORD"]
 dbhost = os.environ["MYSQL_SERVICE_HOST"]
 dbname = os.environ["MYSQL_DATABASE"]
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Mmp!tR1t@localhost/states'
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+application = Flask(__name__)
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Mmp!tR1t@localhost/states'
+application.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
-bootstrap = Bootstrap(app)
+db = SQLAlchemy(application)
+bootstrap = Bootstrap(application)
 
 class State(db.Model):
   __tablename__ = 'states'
@@ -30,7 +30,7 @@ class State(db.Model):
   def __refr__(self):
     return '<State %r>' % self.name
 
-@app.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def index():
   if request.method == 'POST':
     # Add to the database and display updated values
@@ -45,4 +45,4 @@ def index():
     return render_template('index.html', states=states)
     
 if __name__ == '__main__':
-  app.run(debug=True)
+  application.run(debug=True)
