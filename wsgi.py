@@ -9,8 +9,8 @@ dbhost = os.environ["MYSQL_SERVICE_HOST"]
 dbname = os.environ["MYSQL_DATABASE"]
 
 application = Flask(__name__)
-application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://' + user + ":" + passw +
-                                                '@' + dbhost + "/" + dbname
+application.config['SQLALCHEMY_DATABASE_URI'] = \
+  'mysql://%s:%s@%s/%s' % (user, passw, dbhost, dbname)
 application.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
