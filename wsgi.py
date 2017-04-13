@@ -18,7 +18,7 @@ db = SQLAlchemy(application)
 bootstrap = Bootstrap(application)
 
 class State(db.Model):
-  __tablename__ = 'states'
+  __tablename__ = 'state'
   did = db.Column(db.String(4), primary_key=True)
   timestamp = db.Column(db.String(32), primary_key=True)
   state = db.Column(db.String(16))
