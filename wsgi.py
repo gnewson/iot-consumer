@@ -36,7 +36,8 @@ def index():
   if request.method == 'POST':
     # Add to the database and display updated values
     state = State(request.json['deviceId'], request.json['timestamp'],
-		  request.json['operationalState'])
+		  request.json['pollutionLevel'])
+
     db.session.add(state)
     db.session.commit()
     return jsonify({'success': 'state change added'}), 201
